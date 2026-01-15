@@ -1,11 +1,236 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Only a Joke</title>
-  </head>
-  <body>
-    <h1>IT WORKS 😭🔥</h1>
-    <p>GitHub Pages jalan.</p>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>We’re Hiring — Unemployed Edition</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root {
+      --bg: #0f0f0f;
+      --card: #1b1b1b;
+      --accent: #ff8c32;
+      --text: #f5f5f5;
+      --muted: #9a9a9a;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: radial-gradient(circle at top, #1a1a1a, #000);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    header {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin: 0;
+    }
+
+    header h2 {
+      margin: 10px 0 5px;
+      font-weight: 600;
+      letter-spacing: 2px;
+    }
+
+    header p {
+      margin-top: 10px;
+      color: var(--muted);
+    }
+
+    .counter {
+      margin-top: 15px;
+      font-size: 14px;
+      color: var(--accent);
+    }
+
+    main {
+      padding: 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: linear-gradient(180deg, #222, var(--card));
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 4px 10px;
+      font-size: 12px;
+      border-radius: 20px;
+      background: rgba(255,140,50,0.15);
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    ul {
+      padding-left: 18px;
+    }
+
+    li {
+      margin-bottom: 6px;
+      color: #ddd;
+    }
+
+    .apply {
+      position: sticky;
+      bottom: 0;
+      background: linear-gradient(180deg, transparent, #000 40%);
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    button {
+      padding: 14px 30px;
+      font-size: 16px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(135deg, var(--accent), #ffb347);
+      color: #111;
+      font-weight: 700;
+      box-shadow: 0 10px 25px rgba(255,140,50,0.4);
+    }
+
+    footer {
+      margin-top: 80px;
+      padding: 40px 20px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .easter {
+      opacity: 0;
+      transition: opacity 1s ease;
+      margin-top: 20px;
+      font-size: 13px;
+      color: #777;
+    }
+
+    .easter.show {
+      opacity: 1;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>☕ We’re Hiring</h1>
+  <h2>KOTHOK KOPIERS</h2>
+  <p>Unemployed Edition — No salary, just vibes & caffeine</p>
+  <div class="counter">
+    Total Unemployed Joined: <span id="count">0</span>
+  </div>
+</header>
+
+<main>
+  <div class="grid">
+
+    <div class="card">
+      <span class="tag">FULL TIME (UNPAID)</span>
+      <h2>Professional Coffee Drinker</h2>
+      <ul>
+        <li>Drink coffee like it’s your only skill</li>
+        <li>Overthink life while holding a cup</li>
+        <li>Say “this coffee hits different”</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <span class="tag">TIME MANAGEMENT*</span>
+      <h2>Coffee Time Scheduler</h2>
+      <ul>
+        <li>Decide when coffee time starts (now)</li>
+        <li>Create schedules you’ll never follow</li>
+        <li>Delay responsibilities professionally</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <span class="tag">SOCIAL SKILLS*</span>
+      <h2>Ice Breaking Specialist</h2>
+      <ul>
+        <li>Ask “Any job updates?”</li>
+        <li>Create awkward silence</li>
+        <li>Laugh at your own jokes</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="easter" id="easter">
+    You scrolled this far… still unemployed, huh? ☕
+  </div>
+</main>
+
+<div class="apply">
+  <button onclick="joinGroup()">Apply Now</button>
+</div>
+
+<footer>
+  © 2026 Unemployed Coffee Society<br />
+  This website is a joke. Please don’t send CVs.
+</footer>
+
+<script>
+  const WA_LINK = "https://chat.whatsapp.com/GjELPgNKmjRDatKXQSeWEN";
+
+  const countEl = document.getElementById("count");
+  let count = localStorage.getItem("unemployedCount") || 0;
+  countEl.textContent = count;
+
+  function joinGroup() {
+    const confirmJoin = confirm(
+      "Are you sure?\nThis may lead to coffee addiction and zero income."
+    );
+
+    if (!confirmJoin) return;
+
+    count++;
+    localStorage.setItem("unemployedCount", count);
+    countEl.textContent = count;
+
+    const isMobile = /Android|iPhone|iPad/i.test(navigator.userAgent);
+
+    if (isMobile) {
+      window.location.href = WA_LINK;
+    } else {
+      window.open(WA_LINK, "_blank");
+    }
+  }
+
+  window.addEventListener("scroll", () => {
+    const easter = document.getElementById("easter");
+    if (window.scrollY + window.innerHeight >= document.body.scrollHeight - 50) {
+      easter.classList.add("show");
+    }
+  });
+</script>
+
+</body>
 </html>
